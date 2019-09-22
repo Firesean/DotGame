@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2c8fa27-b9d5-4cc8-b94c-6bcb55e900ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/DotGame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.pyw" beforeDir="false" afterPath="$PROJECT_DIR$/Main.pyw" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +21,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
+            <state relative-caret-position="286">
+              <caret line="73" column="87" selection-start-line="73" selection-start-column="87" selection-end-line="73" selection-end-column="87" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -37,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DotGame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="396">
+              <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -52,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="154">
+              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -91,8 +87,8 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/Main.pyw" />
         <option value="$PROJECT_DIR$/Player.py" />
-        <option value="$PROJECT_DIR$/Interface.py" />
         <option value="$PROJECT_DIR$/DotGame.py" />
+        <option value="$PROJECT_DIR$/Interface.py" />
       </list>
     </option>
   </component>
@@ -216,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569127003721</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding Player.py &#10;Slight modification to Interface and DotGame &#10;Bug occurs on claiming 2 squares&#10;Due to is_line changing player and claim box occurs multiple times it shows the box as claimed by both players instead of the one person that claimed both">
+      <created>1569129970329</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569129970329</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -247,7 +250,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding File" />
     <MESSAGE value="Removing Unneeded Code and Comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removing Unneeded Code and Comments" />
+    <MESSAGE value="Adding Player.py &#10;Slight modification to Interface and DotGame &#10;Bug occurs on claiming 2 squares&#10;Due to is_line changing player and claim box occurs multiple times it shows the box as claimed by both players instead of the one person that claimed both" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Player.py &#10;Slight modification to Interface and DotGame &#10;Bug occurs on claiming 2 squares&#10;Due to is_line changing player and claim box occurs multiple times it shows the box as claimed by both players instead of the one person that claimed both" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ConsoleLog.py" />
@@ -274,29 +278,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="154">
+          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DotGame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="396">
+          <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="73" column="87" selection-start-line="73" selection-start-column="87" selection-end-line="73" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
