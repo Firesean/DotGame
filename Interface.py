@@ -62,6 +62,7 @@ class Interface:
                 self.game.change_player()
 
     def claim_box(self, dot_1, dot_2):
+        counter = 0
         for dot in [dot_1, dot_2]:
             for posX in range(-1, 2):
                 for posY in range(-1, 2):
@@ -71,12 +72,16 @@ class Interface:
                     if next_dot:
                         if not next_dot.get_box():
                             if self.game.is_box(next_dot):
-                                self.game.change_player() # Bug with claiming 2 squares
+                                counter += 1
+                                if counter == 1:
+                                    self.game.change_player()
                                 self.canvas.create_text(
                                 ((next_dot.get_row()+1) * self.spacer) + self.offset,
                                 ((next_dot.get_col()+1) * self.spacer) + self.offset,
                                 text=self.game.current_player.get_initial(),
                                 font="TimesNewRoman 20")
+                                self.game.current_player.add_points(1)
+                                print(self.game.players[0].get_points()+ self.game.players[1].get_points())
 
     def select_dot(self, event=None): # On Event we select a dot
         if event:

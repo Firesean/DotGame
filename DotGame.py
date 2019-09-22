@@ -61,4 +61,9 @@ class DotGame:
         dot.set_box()
         return True
 
+    def game_over(self):
+        if (self.board_size - 1)**2 == self.players[0].get_points() + self.players[1].get_points():
+            return True # Work on later
+        return False
+
 
