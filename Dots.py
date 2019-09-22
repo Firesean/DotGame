@@ -36,7 +36,7 @@ class Dot:
     def is_adjacent(self, dot):
         if dot == self:
             return False
-        if dot.get_row() - self.get_row() in [-1, 1] and dot.get_col() == self.get_col(): # Checks if in same row
+        if dot.get_row() - self.get_row() in [-1,  1] and dot.get_col() == self.get_col(): # Checks if in same row
             return True
         if dot.get_col() - self.get_col() in [-1 , 1] and dot.get_row() == self.get_row(): # Checks if in same col
             return True

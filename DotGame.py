@@ -1,16 +1,28 @@
 import Dots
+import Player
 
 class DotGame:
 
-    def __init__(self, board_size=8):
+    def __init__(self, board_size=8, players=[Player.Player("A"), Player.Player("B")]):
         self.board_size = board_size # Amount of dots across the board
         self.board = []
+        self.players = players
+        self.current_player = self.players[0]
         # Main
         self.new_board()
 
-    def new_board(self):
+    def current_player(self):
+        return self.current_player
+
+    def change_player(self):
+        if self.current_player == self.players[0]:
+            self.current_player = self.players[1]
+        else:
+            self.current_player = self.players[0]
+
+    def new_board(self):  # Adds dots to board
         self.board = []
-        for row in range(0,self.board_size): # Adds dots to board
+        for row in range(0,self.board_size):
             self.board.append([])
             for col in range(0,self.board_size):
                 self.board[row].append(Dots.Dot(row,col))
@@ -31,13 +43,6 @@ class DotGame:
             if pos < 0 or pos >= self.board_size:
                 return False
         return True
-
-    def connect_dots(self, dot1, dot2):
-        dot1.connect_dots(dot2)
-        dot2.connect_dots(dot1)
-
-    def is_line(self, dot_1, dot_2):
-        return dot_1.is_connected(dot_2)
 
     def is_box(self, dot):
         if not dot:

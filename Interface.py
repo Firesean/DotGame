@@ -1,5 +1,6 @@
 import tkinter as tk
 import Dots
+
 class Interface:
 
     def __init__(self, root, window_size, game):
@@ -37,28 +38,28 @@ class Interface:
                                         (position[0]-self.offset+self.dot_size)+self.spacer,
                                         (position[1]-self.offset+self.dot_size)+self.spacer,
                                          fill=self.dot_color)
-                # Set Boxes based on cells
 
-    def is_line(self, event=None): # Draws lines between dots
+    def is_line(self, event=None): # Draws lines between dots ; Called by Event
         if event: # Event is a class within Tkinter
             dot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
-            if dot == self.selectedDot: # Prevents making a line for just one dot
+            if dot == self.selectedDot: # Prevents making a line for just itself
                 return
-            if dot: # Must be on board
-                if not dot.is_adjacent(self.selectedDot): # Check if dots are adjacent and NOT Diagonal and Next to each other
+            if dot:  # Is not None
+                if not dot.is_adjacent(self.selectedDot): # Check if dots are next too each other X or Y
                     return
-                if not dot.is_connected(self.selectedDot):  # Checks if connected already
+                if not dot.is_connected(self.selectedDot):  # Checks if connected
                     self.draw_line(dot, self.selectedDot)
                     self.claim_box(dot, self.selectedDot)
 
     def draw_line(self, dot_1, dot_2):
-                self.game.connect_dots(dot_1, dot_2)
-                # Set connected side of box to true
+                dot_1.connect_dots(dot_2)
+                dot_2.connect_dots(dot_1)
                 self.canvas.create_line(dot_1.get_pos(self.spacer, self.offset)[0] + self.offset,
                                         dot_1.get_pos(self.spacer, self.offset)[1] + self.offset,
                                         dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
                                         dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
                                         fill="black")
+                self.game.change_player()
 
     def claim_box(self, dot_1, dot_2):
         for dot in [dot_1, dot_2]:
@@ -70,13 +71,14 @@ class Interface:
                     if next_dot:
                         if not next_dot.get_box():
                             if self.game.is_box(next_dot):
+                                self.game.change_player() # Bug with claiming 2 squares
                                 self.canvas.create_text(
                                 ((next_dot.get_row()+1) * self.spacer) + self.offset,
                                 ((next_dot.get_col()+1) * self.spacer) + self.offset,
-                                text="S",
+                                text=self.game.current_player.get_initial(),
                                 font="TimesNewRoman 20")
 
-    def select_dot(self, event=None): # On press we select a dot
+    def select_dot(self, event=None): # On Event we select a dot
         if event:
             self.selectedDot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
 
