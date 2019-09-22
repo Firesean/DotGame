@@ -1,5 +1,6 @@
 import tkinter as tk
 import Dots
+
 class Interface:
 
     def __init__(self, root, window_size, game):
@@ -58,6 +59,7 @@ class Interface:
                                         dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
                                         dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
                                         fill="black")
+                self.game.change_player()
 
     def claim_box(self, dot_1, dot_2):
         for dot in [dot_1, dot_2]:
@@ -69,10 +71,11 @@ class Interface:
                     if next_dot:
                         if not next_dot.get_box():
                             if self.game.is_box(next_dot):
+                                self.game.change_player() # Bug with claiming 2 squares
                                 self.canvas.create_text(
                                 ((next_dot.get_row()+1) * self.spacer) + self.offset,
                                 ((next_dot.get_col()+1) * self.spacer) + self.offset,
-                                text="S",
+                                text=self.game.current_player.get_initial(),
                                 font="TimesNewRoman 20")
 
     def select_dot(self, event=None): # On Event we select a dot

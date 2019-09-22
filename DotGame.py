@@ -1,12 +1,24 @@
 import Dots
+import Player
 
 class DotGame:
 
-    def __init__(self, board_size=8):
+    def __init__(self, board_size=8, players=[Player.Player("A"), Player.Player("B")]):
         self.board_size = board_size # Amount of dots across the board
         self.board = []
+        self.players = players
+        self.current_player = self.players[0]
         # Main
         self.new_board()
+
+    def current_player(self):
+        return self.current_player
+
+    def change_player(self):
+        if self.current_player == self.players[0]:
+            self.current_player = self.players[1]
+        else:
+            self.current_player = self.players[0]
 
     def new_board(self):  # Adds dots to board
         self.board = []
