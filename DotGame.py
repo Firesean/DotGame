@@ -8,9 +8,9 @@ class DotGame:
         # Main
         self.new_board()
 
-    def new_board(self):
+    def new_board(self):  # Adds dots to board
         self.board = []
-        for row in range(0,self.board_size): # Adds dots to board
+        for row in range(0,self.board_size):
             self.board.append([])
             for col in range(0,self.board_size):
                 self.board[row].append(Dots.Dot(row,col))
@@ -31,13 +31,6 @@ class DotGame:
             if pos < 0 or pos >= self.board_size:
                 return False
         return True
-
-    def connect_dots(self, dot1, dot2):
-        dot1.connect_dots(dot2)
-        dot2.connect_dots(dot1)
-
-    def is_line(self, dot_1, dot_2):
-        return dot_1.is_connected(dot_2)
 
     def is_box(self, dot):
         if not dot:
