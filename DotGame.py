@@ -3,7 +3,7 @@ import Player
 
 class DotGame:
 
-    def __init__(self, board_size=8, players=[Player.Player("A"), Player.Player("B")]):
+    def __init__(self, board_size=3, players=[Player.Player("A"), Player.Player("B")]):
         self.board_size = board_size # Amount of dots across the board
         self.board = []
         self.players = players
@@ -61,9 +61,18 @@ class DotGame:
         dot.set_box()
         return True
 
-    def game_over(self):
+    def is_game_over(self):
         if (self.board_size - 1)**2 == self.players[0].get_points() + self.players[1].get_points():
-            return True # Work on later
+            return True
         return False
+
+    def get_winner(self):
+        p1 = self.players[0]
+        p2 = self.players[1]
+        if p1.get_points() == p2.get_points():
+            return "Draw"
+        if p1.get_points() > p2.get_points():
+            return p1.get_initial()
+        return p2.get_initial()
 
 
