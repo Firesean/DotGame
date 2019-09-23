@@ -6,6 +6,7 @@ class Interface:
     def __init__(self, root, window_size, game):
         self.root = root
         self.game = game
+        self.fire_icon_path = r"FireIcon32x32.ico"
         self.dot_color = "black"
         self.window_size = window_size
         self.spacer = int(self.window_size / self.game.board_size + 1)
@@ -16,6 +17,7 @@ class Interface:
                                 width=self.window_size+self.spacer,
                                 height=self.window_size+self.spacer)
         # Modifications
+        self.root.iconbitmap(self.fire_icon_path)
         self.root.title("{}".format(type(self.game).__name__))
         self.root.resizable(width=False, height=False)
         # Binds
@@ -50,6 +52,9 @@ class Interface:
                 if not dot.is_connected(self.selectedDot):  # Checks if connected
                     self.draw_line(dot, self.selectedDot)
                     self.claim_box(dot, self.selectedDot)
+                    if self.game.is_game_over():
+                        winner = self.game.get_winner()
+                        self.restart_game(winner)
 
     def draw_line(self, dot_1, dot_2):
                 dot_1.connect_dots(dot_2)
@@ -81,11 +86,11 @@ class Interface:
                                 text=self.game.current_player.get_initial(),
                                 font="TimesNewRoman 20")
                                 self.game.current_player.add_points(1)
-                                print(self.game.players[0].get_points()+ self.game.players[1].get_points())
+
 
     def select_dot(self, event=None): # On Event we select a dot
         if event:
             self.selectedDot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
 
-
-
+    def restart_game(self, player):
+        pass
