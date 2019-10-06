@@ -41,3 +41,4 @@ class Dot:
         if dot.get_col() - self.get_col() in [-1 , 1] and dot.get_row() == self.get_row(): # Checks if in same col
             return True
         return False
+
