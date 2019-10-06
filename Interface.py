@@ -1,5 +1,6 @@
 import tkinter as tk
 import Dots
+import DotGame
 
 class Interface:
 
@@ -8,6 +9,8 @@ class Interface:
         self.game = game
         self.fire_icon_path = r"FireIcon32x32.ico"
         self.dot_color = "black"
+        self.text_color = "white"
+        self.font_style = "TimeNewRoman 20"
         self.window_size = window_size
         self.spacer = int(self.window_size / self.game.board_size + 1)
         self.offset = self.spacer / 2
@@ -18,7 +21,7 @@ class Interface:
                                 height=self.window_size+self.spacer)
         # Modifications
         self.root.iconbitmap(self.fire_icon_path)
-        self.root.title("{}".format(type(self.game).__name__))
+        self.update_current_player_title()
         self.root.resizable(width=False, height=False)
         # Binds
         self.root.bind("<ButtonPress>", lambda event: self.select_dot(event))
@@ -63,11 +66,12 @@ class Interface:
                                         dot_1.get_pos(self.spacer, self.offset)[1] + self.offset,
                                         dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
                                         dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
-                                        fill="black")
+                                        fill=self.dot_color) # Change self.dot_color to player's color later on
                 self.game.change_player()
+                self.update_current_player_title()
 
     def claim_box(self, dot_1, dot_2):
-        counter = 0
+        claimed = False
         for dot in [dot_1, dot_2]:
             for posX in range(-1, 2):
                 for posY in range(-1, 2):
@@ -77,20 +81,49 @@ class Interface:
                     if next_dot:
                         if not next_dot.get_box():
                             if self.game.is_box(next_dot):
-                                counter += 1
-                                if counter == 1:
+                                if not claimed:
+                                    claimed = True
                                     self.game.change_player()
+                                    self.update_current_player_title()
                                 self.canvas.create_text(
                                 ((next_dot.get_row()+1) * self.spacer) + self.offset,
                                 ((next_dot.get_col()+1) * self.spacer) + self.offset,
-                                text=self.game.current_player.get_initial(),
-                                font="TimesNewRoman 20")
-                                self.game.current_player.add_points(1)
+                                text=self.game.get_current_player().get_initial(),
+                                font=self.font_style)
+                                self.game.get_current_player().add_points(1)
+                                print(self.game.get_current_player().get_points())
 
+    def update_current_player_title(self):
+        self.root.title("{0} - Turn : {1}".format(type(self.game).__name__,
+                                                  self.game.get_current_player().get_initial()))
 
     def select_dot(self, event=None): # On Event we select a dot
         if event:
             self.selectedDot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
 
-    def restart_game(self, player):
-        pass
+    def restart_game(self, winner):
+        self.display_winner(winner)
+        self.clear_board() # Clears Canvas
+        self.new_game() # Creates new game
+        self.create_interface() # Draws board again
+
+    def display_winner(self, winner):
+        # Create background
+        board_length = self.spacer * self.game.board_size
+        win_text = "Winner : {}".format(winner)
+        self.canvas.create_rectangle(self.spacer, self.spacer,
+                                     board_length,board_length, fill=self.dot_color)
+        if winner == "Draw":
+            win_text = "Its a draw"
+        # Display Text
+        pos = self.window_size/2+self.offset
+        self.canvas.create_text(pos, pos,
+                                text=win_text, fill=self.text_color, font=self.font_style)
+
+    def clear_board(self):
+        self.canvas.destroy()
+        self.canvas = tk.Canvas(self.root,
+                                width=self.window_size+self.spacer,
+                                height=self.window_size+self.spacer)
+    def new_game(self):
+        self.game.reset()

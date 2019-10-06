@@ -11,7 +11,7 @@ class DotGame:
         # Main
         self.new_board()
 
-    def current_player(self):
+    def get_current_player(self):
         return self.current_player
 
     def change_player(self):
@@ -35,8 +35,7 @@ class DotGame:
     def get_dot_by_posXY(self, x, y, spacer, offset):
         x = int((x - offset) / spacer)
         y = int((y - offset) / spacer)
-        if self.is_on_board([x,y]):
-            return self.board[x][y]
+        return self.get_dot_by_row_col(x,y)
 
     def is_on_board(self, coordinates): # Takes coordinates of row and col as an array to determine if on the board
         for pos in coordinates:
@@ -74,5 +73,8 @@ class DotGame:
         if p1.get_points() > p2.get_points():
             return p1.get_initial()
         return p2.get_initial()
+
+    def reset(self):
+        self.__init__()
 
 
