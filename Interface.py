@@ -62,7 +62,6 @@ class Interface:
                         self.restart_game(winner)
 
     def draw_line(self, dot_1, dot_2):
-        print("line")
         dot_1.connect_dots(dot_2)
         dot_2.connect_dots(dot_1)
         self.canvas.create_line(dot_1.get_pos(self.spacer, self.offset)[0] + self.offset,
@@ -102,7 +101,6 @@ class Interface:
 
     def select_dot(self, event=None): # On Event we select a dot
         if event:
-            print("selected")
             self.selectedDot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
 
     def restart_game(self, winner):
