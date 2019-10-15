@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import messagebox
+
 import Dots
 import DotGame
 
@@ -60,15 +62,16 @@ class Interface:
                         self.restart_game(winner)
 
     def draw_line(self, dot_1, dot_2):
-                dot_1.connect_dots(dot_2)
-                dot_2.connect_dots(dot_1)
-                self.canvas.create_line(dot_1.get_pos(self.spacer, self.offset)[0] + self.offset,
-                                        dot_1.get_pos(self.spacer, self.offset)[1] + self.offset,
-                                        dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
-                                        dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
-                                        fill=self.dot_color) # Change self.dot_color to player's color later on
-                self.game.change_player()
-                self.update_current_player_title()
+        print("line")
+        dot_1.connect_dots(dot_2)
+        dot_2.connect_dots(dot_1)
+        self.canvas.create_line(dot_1.get_pos(self.spacer, self.offset)[0] + self.offset,
+                                dot_1.get_pos(self.spacer, self.offset)[1] + self.offset,
+                                dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
+                                dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
+                                fill=self.dot_color) # Change self.dot_color to player's color later on
+        self.game.change_player()
+        self.update_current_player_title()
 
     def claim_box(self, dot_1, dot_2):
         claimed = False
@@ -99,6 +102,7 @@ class Interface:
 
     def select_dot(self, event=None): # On Event we select a dot
         if event:
+            print("selected")
             self.selectedDot = self.game.get_dot_by_posXY(event.x, event.y, self.spacer, self.offset)
 
     def restart_game(self, winner):
@@ -119,6 +123,7 @@ class Interface:
         pos = self.window_size/2+self.offset
         self.canvas.create_text(pos, pos,
                                 text=win_text, fill=self.text_color, font=self.font_style)
+        messagebox.showinfo("Winner", win_text)
 
     def clear_board(self):
         self.canvas.destroy()
@@ -126,4 +131,4 @@ class Interface:
                                 width=self.window_size+self.spacer,
                                 height=self.window_size+self.spacer)
     def new_game(self):
-        self.game.reset()
+        self.game.new_game()

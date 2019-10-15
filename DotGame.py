@@ -9,7 +9,12 @@ class DotGame:
         self.players = players
         self.current_player = self.players[0]
         # Main
-        self.new_board()
+        self.new_game()
+
+
+    def reset_players(self):
+        for player in self.players:
+            player.reset_points()
 
     def get_current_player(self):
         return self.current_player
@@ -20,7 +25,8 @@ class DotGame:
         else:
             self.current_player = self.players[0]
 
-    def new_board(self):  # Adds dots to board
+    def new_game(self):  # Adds dots to board
+        self.reset_players()
         self.board = []
         for row in range(0,self.board_size):
             self.board.append([])
@@ -74,7 +80,5 @@ class DotGame:
             return p1.get_initial()
         return p2.get_initial()
 
-    def reset(self):
-        self.__init__()
 
 

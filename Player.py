@@ -15,3 +15,6 @@ class Player:
 
     def get_initial(self):
         return self.initial
+
+    def reset_points(self):
+        self.points = 0
