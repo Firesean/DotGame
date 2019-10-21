@@ -7,7 +7,6 @@
 # Most Points win.
 # Each turn you will place a line between dots if you manage to get a box out of your turn you can go one more time.
 #
-import Player
 import Interface
 import tkinter as tk
 import DotGame

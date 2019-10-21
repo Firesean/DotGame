@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-import Dots
-import DotGame
 
 class Interface:
 

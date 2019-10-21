@@ -31,7 +31,7 @@ class DotGame:
         for row in range(0,self.board_size):
             self.board.append([])
             for col in range(0,self.board_size):
-                self.board[row].append(Dots.Dot(row,col))
+                self.board[row].append(Dots.Dot(row, col))
 
     def get_dot_by_row_col(self, row, col):
         if self.is_on_board([row, col]):
