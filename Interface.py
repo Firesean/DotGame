@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 
 class Interface:
-
+    line_width = 6
     def __init__(self, root, window_size, game):
         self.root = root
         self.game = game
@@ -66,7 +66,8 @@ class Interface:
                                 dot_1.get_pos(self.spacer, self.offset)[1] + self.offset,
                                 dot_2.get_pos(self.spacer, self.offset)[0] + self.offset,
                                 dot_2.get_pos(self.spacer, self.offset)[1] + self.offset,
-                                fill=self.dot_color) # Change self.dot_color to player's color later on
+                                fill=self.game.get_current_player().get_color(),
+                                width=self.line_width)
         self.game.change_player()
         self.update_current_player_title()
 
@@ -89,7 +90,8 @@ class Interface:
                                 ((next_dot.get_row()+1) * self.spacer) + self.offset,
                                 ((next_dot.get_col()+1) * self.spacer) + self.offset,
                                 text=self.game.get_current_player().get_initial(),
-                                font=self.font_style)
+                                font=self.font_style,
+                                fill=self.game.get_current_player().get_color())
                                 self.game.get_current_player().add_points(1)
                                 print(self.game.get_current_player().get_points())
 

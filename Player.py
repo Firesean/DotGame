@@ -1,8 +1,12 @@
 class Player:
 
-    def __init__(self, initial="A", points=0):
+    def __init__(self, initial="A", points=0, color="black"):
         self.initial = initial[0]
         self.points = points
+        self.color = color
+
+    def get_color(self):
+        return self.color
 
     def add_points(self, points):
         self.points += points

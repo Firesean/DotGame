@@ -3,7 +3,7 @@ import Player
 
 class DotGame:
 
-    def __init__(self, board_size=8, players=[Player.Player("A"), Player.Player("B")]):
+    def __init__(self, board_size=8, players=[Player.Player("A", 0, "red"), Player.Player("B", 0, "blue")]):
         self.board_size = board_size # Amount of dots across the board
         self.board = []
         self.players = players
