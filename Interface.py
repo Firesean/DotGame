@@ -4,6 +4,8 @@ from tkinter import messagebox
 
 class Interface:
     line_width = 6
+    WIN_BG = "snow4"
+    CANVAS_CLR = "light grey"
     def __init__(self, root, window_size, game):
         self.root = root
         self.game = game
@@ -18,8 +20,12 @@ class Interface:
         self.dot_size = self.spacer / 8
         self.canvas = tk.Canvas(root,
                                 width=self.window_size+self.spacer,
-                                height=self.window_size+self.spacer)
+                                height=self.window_size+self.spacer,
+                                bg=self.CANVAS_CLR
+                                )
         # Modifications
+
+        self.root.config(bg=self.WIN_BG)
         self.root.iconbitmap(self.fire_icon_path)
         self.update_current_player_title()
         self.root.resizable(width=False, height=False)
